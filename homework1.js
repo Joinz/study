@@ -37,14 +37,14 @@ function setCell(row, col, val)
     var arr =[];
     arr = function()
     {
-        '[' +
+        '[';
         for (var i = 0; i < n; i++)
         {
-            '[' + (i+1) + ','
-            for (var j = 0; j < n; j++)
-            {
-                arr[i+1][j+1] = j+1;
-            }
+            '[' + for (var j = 0; j < n; j++)
+                {
+                    j+1;
+                }
+            '], ';
         }
         alert(arr[row][col]);
     }
