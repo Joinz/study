@@ -1,12 +1,10 @@
 //Создание матрицы
 //
-function createMatrix()
-{
+function createMatrix() {
     var matrix = document.getElementById('matrix');
     var n = 20 * 20;
     
-    for (var i = 0; i < n; i++)
-    {
+    for (var i = 0; i < n; i++) {
         var div = document.createElement('div');
         div.className = 'cell';
         matrix.appendChild(div);
@@ -16,8 +14,7 @@ function createMatrix()
 //
 //Чтение ячейки матрицы
 //
-function getCell(row, col)
-{
+function getCell(row, col) {
     //Функция принимает координаты ячейки,
     //должно вернуть true, если она закрашена,
     //false, если не закрашена
@@ -26,35 +23,24 @@ function getCell(row, col)
 //
 //Установка ячейки матрицы
 //
-function setCell(row, col, val)
-{
+function setCell(row, col, val) {
     //Функция принимает координаты ячейки,
     //если val == true, закрашивает ячейку,
     //иначе убирает закраску.
-    var matrix = document.getElementById('matrix');
-    var elems = matrix.getElementsByTagName('*');
-    var n = 20;
-    var arr =[];
-    arr = function()
-    {
-        '[';
-        for (var i = 0; i < n; i++)
-        {
-            '[' + for (var j = 0; j < n; j++)
-                {
-                    j+1;
-                }
-            '], ';
-        }
-        alert(arr[row][col]);
+    var num = ((row-1)*20)+col-1;
+    var matrixChild = document.getElementById('matrix').children[num];
+    if (val == true) {
+    matrixChild.style.backgroundColor = 'red';
+    } else {
+        matrixChild.style.backgroundColor = '';
     }
+        
 }
 
 //
 //Точка входа
 //
-window.onload = function()
-{
+window.onload = function() {
     createMatrix();
-    setCell(1, 1, true);
+    setCell(5, 3, false);
 }
