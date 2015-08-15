@@ -18,6 +18,15 @@ function getCell(row, col) {
     //Функция принимает координаты ячейки,
     //должно вернуть true, если она закрашена,
     //false, если не закрашена
+    var num = ((row-1)*20)+col-1;
+    var matrixChild = document.getElementById('matrix').children[num];
+    var matrixChildStyle = matrixChild.style.backgroundColor;
+    if (matrixChildStyle = 'red') {
+        return true;
+    } else {
+        return false;
+    }
+    
 }
 
 //
