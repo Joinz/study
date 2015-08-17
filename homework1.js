@@ -57,7 +57,8 @@ function setCellMas(row, col, val) {
             mas[i][j] = j;
         }
     }
-    alert(mas);   
+    alert(mas);
+        
 }
 
 //
