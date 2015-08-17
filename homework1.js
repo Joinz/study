@@ -36,8 +36,7 @@ function setCell(row, col, val) {
     //Функция принимает координаты ячейки,
     //если val == true, закрашивает ячейку,
     //иначе убирает закраску.
-    var n = 20;
-    var num = ((row-1)*n)+col-1;
+    var num = ((row-1)*20)+col-1;
     var matrixChild = document.getElementById('matrix').children[num];
     if (val == true) {
     matrixChild.style.backgroundColor = 'red';
