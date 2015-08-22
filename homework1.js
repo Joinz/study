@@ -11,6 +11,12 @@ function createMatrix() {
     }
 }
 
+
+//
+//Перемещение по матрице
+//
+
+
 //
 //Чтение ячейки матрицы
 //
@@ -18,7 +24,7 @@ function getCell(row, col) {
     //Функция принимает координаты ячейки,
     //должно вернуть true, если она закрашена,
     //false, если не закрашена
-    var num = ((row-1)*20)+col-1;
+    var num = (row-1)*20+col-1;
     var matrixChild = document.getElementById('matrix').children[num];
     var matrixChildStyle = matrixChild.style.backgroundColor;
     if (matrixChildStyle = 'red') {
@@ -36,7 +42,7 @@ function setCell(row, col, val) {
     //Функция принимает координаты ячейки,
     //если val == true, закрашивает ячейку,
     //иначе убирает закраску.
-    var num = ((row-1)*20)+col-1;
+    var num = (row-1)*20+col-1;
     var matrixChild = document.getElementById('matrix').children[num];
     if (val == true) {
     matrixChild.style.backgroundColor = 'red';
@@ -57,8 +63,7 @@ function setCellMas(row, col, val) {
             mas[i][j] = j;
         }
     }
-    alert(mas);
-        
+    
 }
 
 //
@@ -67,4 +72,6 @@ function setCellMas(row, col, val) {
 window.onload = function() {
     createMatrix();
     setCell(5, 3, false);
+    var matrix = document.getElementById('matrix');
+    matrix.onkeydown = matrix.onkeyup = handle();
 }
