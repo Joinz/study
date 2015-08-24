@@ -1,3 +1,14 @@
+//
+//Массив с кодами кнопок
+//
+var KEY_CODE = {
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40
+}
+
+//
 //Создание матрицы
 //
 function createMatrix() {
@@ -10,7 +21,6 @@ function createMatrix() {
         matrix.appendChild(div);
     }
 }
-
 
 //
 //Перемещение по матрице
@@ -44,26 +54,7 @@ function setCell(row, col, val) {
     //иначе убирает закраску.
     var num = (row-1)*20+col-1;
     var matrixChild = document.getElementById('matrix').children[num];
-    if (val == true) {
-    matrixChild.style.backgroundColor = 'red';
-    } else {
-        matrixChild.style.backgroundColor = '';
-    }
-        
-}
-function setCellMas(row, col, val) {
-    //Функция принимает координаты ячейки,
-    //если val == true, закрашивает ячейку,
-    //иначе убирает закраску.
-    var n = 20;
-    var mas = [];
-    for (var i = 1; i <= n; i++) {
-        mas[i] = [];
-        for (var j = 1; j <= n; j++) {
-            mas[i][j] = j;
-        }
-    }
-    
+    matrixChild.className = val ? "cell mark" : 'cell';
 }
 
 //
@@ -71,7 +62,7 @@ function setCellMas(row, col, val) {
 //
 window.onload = function() {
     createMatrix();
-    setCell(5, 3, false);
+    setCell(5, 3, true);
     var matrix = document.getElementById('matrix');
-    matrix.onkeydown = matrix.onkeyup = handle();
+    matrix.onkeydown = handle();
 }
