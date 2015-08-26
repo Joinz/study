@@ -12,9 +12,7 @@ var KEY_CODE = {
 //Создание матрицы
 //
 function createMatrix() {
-    var matrix = document.getElementById('matrix');
     var n = 20 * 20;
-    
     for (var i = 0; i < n; i++) {
         var div = document.createElement('div');
         div.className = 'cell';
@@ -35,9 +33,8 @@ function getCell(row, col) {
     //должно вернуть true, если она закрашена,
     //false, если не закрашена
     var num = (row-1)*20+col-1;
-    var matrixChild = document.getElementById('matrix').children[num];
-    var matrixChildStyle = matrixChild.style.backgroundColor;
-    if (matrixChildStyle = 'red') {
+    var matrixChild = matrix.children[num];
+    if (matrixChild.className = 'cell mark') {
         return true;
     } else {
         return false;
@@ -53,8 +50,7 @@ function setCell(row, col, val) {
     //если val == true, закрашивает ячейку,
     //иначе убирает закраску.
     var num = (row-1)*20+col-1;
-    var matrixChild = document.getElementById('matrix').children[num];
-    matrixChild.className = val ? "cell mark" : 'cell';
+    matrix.children[num].className = val ? "cell mark" : 'cell';
 }
 
 //
@@ -62,7 +58,5 @@ function setCell(row, col, val) {
 //
 window.onload = function() {
     createMatrix();
-    setCell(5, 3, true);
     var matrix = document.getElementById('matrix');
-    matrix.onkeydown = handle();
 }
