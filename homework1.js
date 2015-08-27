@@ -57,36 +57,69 @@ function getCell(row, col) {
 }
 
 //
-//Перемещение по матрице
-//
-
-
-//
 //Точка входа
 //
 window.onload = function() {
     createMatrix();
     var matrix = document.getElementById('matrix');
-    var player_x;
-    var player_y;
-    var target_x;
-    var target_y;
-}
+    var target_x = 20;
+    var target_y = 20;
+    setCell(target_x, target_y, true);
+    var player_x = 1;
+    var player_y = 1;
+    setCell(player_x, player_y, true);
+    
+    //
+    //Обработка нажатий клавиш
+    //
+    function handle(keycode) {
+        var old_x = player_x;
+        var old_y = player_y;
+        if (getCell(player_x,player_y)) {
+            if (keycode == KEY_CODE.UP) {
+                player_x -= 1;
+            } else if (keycode == KEY_CODE.RIGHT) {
+                player_y += 1;
+            } else if (keycode == KEY_CODE.DOWN) {
+                player_x += 1;
+            } else if (keycode == KEY_CODE.LEFT) {
+                player_y -= 1;
+            } else {
+                return false;
+            }
+        }
+        if (player_x < 0) {
+            player_x = 0;
+        }
+        if (player_y < 0) {
+            player_y = 0;
+        }
+        if (player_x > 20) {
+            player_x = 20;
+        }
+        if (player_y > 20) {
+            player_y = 20;
+        }
 
-//
-//Обработка нажатий клавиш
-//
-
-//
-//Запоминание нажатий клавиш
-//
-window.onkeydown = function (event) {
-    if (!event) var event = window.event;
-    var keycode;
-    if (event.keyCode) {
-        keycode = event.keyCode; //IE
-    } else if (event.which) {
-        keycode = event.which; //All browsers
+        setCell(player_x, player_y, true);
+        setCell(old_x, old_y, false);
+        if (player_x == target_x & player_y == target_y) {
+            alert('Победа!');
+        }
+        return true;
     }
-    handle(keycode);
+    window.onkeydown = function (event) {
+        
+        //
+        //Запоминание нажатий клавиш
+        //
+        if (!event) var event = window.event;
+        var keycode;
+        if (event.keyCode) {
+            keycode = event.keyCode; //IE
+        } else if (event.which) {
+            keycode = event.which; //All browsers
+        }
+        handle(keycode);
+    }
 }
