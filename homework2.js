@@ -23,7 +23,7 @@ function Matrix(containerId, rows, cols) {
     }
     this.setCell = function(row, col, val) {
         var index = (row - 1) * this.cols + (col - 1);
-        var div = document.getElementById('matrix').children[index];
+        var div = document.getElementById(this.containerId).children[index];
         div.className = val ? 'cell mark' : 'cell';
     }
 }
